@@ -26,6 +26,7 @@ module.exports = {
 
     contextTypes: {
         layout: React.PropTypes.string,
+        getInputIndex: React.PropTypes.func,
         validatePristine: React.PropTypes.bool,
         rowClassName: React.PropTypes.oneOfType([
             React.PropTypes.string,
@@ -123,7 +124,7 @@ module.exports = {
         return [
             'frc',
             this.props.name.split('[').join('_').replace(']', ''),
-            this.hashString(JSON.stringify(label))
+           this.context.getInputIndex()
         ].join('-');
     },
 

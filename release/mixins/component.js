@@ -14,6 +14,7 @@ module.exports = {
 
     contextTypes: {
         layout: React.PropTypes.string,
+        getInputIndex: React.PropTypes.func,
         validatePristine: React.PropTypes.bool,
         rowClassName: React.PropTypes.oneOfType([React.PropTypes.string, React.PropTypes.array, React.PropTypes.object]),
         labelClassName: React.PropTypes.oneOfType([React.PropTypes.string, React.PropTypes.array, React.PropTypes.object]),
@@ -96,7 +97,7 @@ module.exports = {
             return this.props.id;
         }
         var label = typeof this.props.label === 'undefined' ? '' : this.props.label;
-        return ['frc', this.props.name.split('[').join('_').replace(']', ''), this.hashString(JSON.stringify(label))].join('-');
+        return ['frc', this.props.name.split('[').join('_').replace(']', ''), this.context.getInputIndex()].join('-');
     },
 
     renderHelp: function renderHelp() {
